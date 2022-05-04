@@ -48,7 +48,7 @@ class User extends Component {
         <ActionCableProvider cable={this.cable}/>
         <p>Player</p>
         <form onSubmit={this.handleSubmitMessage}>
-          <input name='message' type='text' value={this.state.value} />
+          <input name='message' type='text' />
           <input type='submit' value='Send message' />
         </form>
       </div>
