@@ -34,11 +34,23 @@ class User extends Component {
     console.log(message)
   }
 
+  handleSubmitMessage = e => {
+    e.preventDefault();
+    this.subscriptions.send(
+      {message: e.target.message.value}
+    )
+    e.target.reset()
+  }
+
   render() {
     return (
       <div>
         <ActionCableProvider cable={this.cable}/>
         <p>Player</p>
+        <form onSubmit={this.handleSubmitMessage}>
+          <input name='message' type='text' value={this.state.value} />
+          <input type='submit' value='Send message' />
+        </form>
       </div>
     );
   }
