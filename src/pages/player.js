@@ -15,7 +15,7 @@ class Player extends Component {
 
   createSubscription = () => {
     this.subscriptions = this.cable.subscriptions.create(
-      { channel: 'PlayerChannel' },
+      { channel: 'PlayerChannel', game_id: 'ea0134b736024ce7a773ec218f9fc4d2' },
       {
         connected: () => {
           console.log("player channel connected");
