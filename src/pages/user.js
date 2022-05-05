@@ -15,7 +15,7 @@ class User extends Component {
 
   createSubscription = () => {
     this.subscriptions = this.cable.subscriptions.create(
-      { channel: 'UserChannel', game_id: 'ea0134b736024ce7a773ec218f9fc4d2' },
+      { channel: 'UserChannel', game_room_id: '1', 'access-token': 'ef42afb-b084-4eb3-b923-c5e8162cfb1a' },
       {
         connected: () => {
           console.log("user channel connected");
@@ -37,7 +37,10 @@ class User extends Component {
   handleSubmitMessage = e => {
     e.preventDefault();
     this.subscriptions.send(
-      {message: e.target.message.value}
+      {
+        body: e.target.message.value,
+        type: 'test',
+      }
     )
     e.target.reset()
   }

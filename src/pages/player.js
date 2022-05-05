@@ -15,7 +15,7 @@ class Player extends Component {
 
   createSubscription = () => {
     this.subscriptions = this.cable.subscriptions.create(
-      { channel: 'PlayerChannel', game_id: 'ea0134b736024ce7a773ec218f9fc4d2' },
+      { channel: 'PlayerChannel', game_room_id: '1', player_id: '1231' },
       {
         connected: () => {
           console.log("player channel connected");
@@ -37,7 +37,10 @@ class Player extends Component {
   handleSubmitMessage = e => {
     e.preventDefault();
     this.subscriptions.send(
-      { message: e.target.message.value }
+      {
+        body: e.target.message.value,
+        type: 'test',
+      }
     )
     e.target.reset()
   }
